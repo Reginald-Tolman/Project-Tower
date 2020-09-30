@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : Unit
+public class Mech : Unit
 {
     // Start is called before the first frame update
-    Tower()
+    Mech()
     {
         Health = 100;
         MoveSpeed = 0;
