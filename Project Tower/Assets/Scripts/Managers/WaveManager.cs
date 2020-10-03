@@ -35,8 +35,7 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < AmountOfEnemies; i++)
         {
-            GameObject newEnemy = new GameObject();
-            newEnemy.AddComponent<Mech>();
+            GameObject newEnemy = UnitFactory.Create("mech");
             CurrentWave.Add(newEnemy);
         }
     } 

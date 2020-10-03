@@ -5,6 +5,8 @@ using UnityEngine;
 public class Mech : Unit
 {
     // Start is called before the first frame update
+    //=> is the same as { get { return "mech"}}
+    public override string UnitType => "mech";
     public Mech()
     {
         Health = 100;
@@ -12,5 +14,16 @@ public class Mech : Unit
         Damage = 5;
         IsStationary = false;        
         IsSpawned = false;
+        Material = (Material)Resources.Load("Basic Mech");
+    }
+
+    public override Unit Clone()
+    {
+        return (Mech)this.MemberwiseClone();
+    }
+
+    public override void Initialized()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = Material;
     }
 }
