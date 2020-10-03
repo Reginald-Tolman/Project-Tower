@@ -10,6 +10,7 @@ public class Tower : Unit
         Health = 100;
         MoveSpeed = 0;
         Damage = 0;
-        IsStationary = true;        
+        IsStationary = true;
+        IsSpawned = false;        
     }
 }

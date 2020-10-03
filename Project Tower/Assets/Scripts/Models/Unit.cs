@@ -8,5 +8,5 @@ public class Unit : MonoBehaviour
     public int MoveSpeed { get; set; }
     public int Damage { get; set; }
     public bool IsStationary {get; set;}
-    
+    public bool IsSpawned;
 }
