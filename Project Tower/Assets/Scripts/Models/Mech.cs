@@ -14,7 +14,6 @@ public class Mech : Unit
         Damage = 5;
         IsStationary = false;        
         IsSpawned = false;
-        Material = (Material)Resources.Load("Basic Mech");
     }
 
     public override Unit Clone()
@@ -24,6 +23,8 @@ public class Mech : Unit
 
     public override void Initialized()
     {
+        Material = (Material)Resources.Load("Basic Mech");
+
         gameObject.GetComponent<MeshRenderer>().material = Material;
     }
 }
