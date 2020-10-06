@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,10 @@ public class WaveManager : MonoBehaviour
 
     public int CurrentWaveNumber;
     public int WaveSpawnTimer;
-    public List<GameObject> CurrentWave;    
+    public List<Waypoint> Waypoints;
+    public List<GameObject> CurrentWave;
+    public List<GameObject> RemoveFromWave; 
+
 
     private void Awake()
     {
@@ -22,6 +26,18 @@ public class WaveManager : MonoBehaviour
         else
         {
             instance = this;
+        }
+
+        GenerateWaypoints();
+    }
+
+    private void GenerateWaypoints()
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            Waypoint newWaypoint = new Waypoint();
+            newWaypoint.Position = new Vector3(UnityEngine.Random.Range(-10, 10) * i, UnityEngine.Random.Range(-10, 10) * i, UnityEngine.Random.Range(-10, 10) * i);
+            Waypoints.Add(newWaypoint);
         }
     }
 
@@ -58,5 +74,10 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(WaveSpawnTimer);
             }            
         }        
+    }
+
+    public void RemoveUnitFromCurrentWave(GameObject gameObject)
+    {
+
     }
 }

@@ -10,21 +10,16 @@ public class Mech : Unit
     public Mech()
     {
         Health = 100;
-        MoveSpeed = 500;
+        BaseMoveSpeed = 500;
+        AddedFlatMoveSpeed = 0;
         Damage = 5;
         IsStationary = false;        
         IsSpawned = false;
     }
 
-    public override Unit Clone()
-    {
-        return (Mech)this.MemberwiseClone();
-    }
-
     public override void Initialized()
     {
         Material = (Material)Resources.Load("Basic Mech");
-
         gameObject.GetComponent<MeshRenderer>().material = Material;
     }
 }

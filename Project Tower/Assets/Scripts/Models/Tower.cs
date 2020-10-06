@@ -8,15 +8,11 @@ public class Tower : Unit
     public Tower()
     {
         Health = 100;
-        MoveSpeed = 0;
+        BaseMoveSpeed = 0;
+        AddedFlatMoveSpeed = 0;
         Damage = 0;
         IsStationary = true;
         IsSpawned = false;        
-    }
-
-    public override Unit Clone()
-    {
-        return (Tower)this.MemberwiseClone();
     }
 
     public override void Initialized()
