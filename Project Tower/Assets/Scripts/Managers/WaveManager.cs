@@ -16,6 +16,7 @@ public class WaveManager : MonoBehaviour
     public List<GameObject> CurrentWave;
     public List<GameObject> RemoveFromWave; 
 
+    private float timeStamp;
 
     private void Awake()
     {
@@ -44,36 +45,30 @@ public class WaveManager : MonoBehaviour
     public void Load(int AmountOfEnemies)
     {
         WaveSpawnTimer = 1;
-        AddToWave(AmountOfEnemies);
     }
 
-    public void AddToWave(int AmountOfEnemies)
+    public void StartNextWave(int AmountOfEnemies)
+    {
+        if(AmountOfEnemies != 0)
+        {            
+            StartCoroutine(SpawnWave(AmountOfEnemies));
+        }        
+    }
+
+    private IEnumerator SpawnWave(int AmountOfEnemies)
     {
         for (int i = 0; i < AmountOfEnemies; i++)
         {
             GameObject newEnemy = UnitFactory.Create("mech");
+            newEnemy.GetComponent<Unit>().IsSpawned = true;
             CurrentWave.Add(newEnemy);
-        }
-    } 
-
-    public void StartNextWave()
-    {
-        if(CurrentWave.Count != 0)
-        {            
-            StartCoroutine(SpawnEnemy());
+            yield return new WaitForSeconds(WaveSpawnTimer + 1);             
         }        
     }
 
-    private IEnumerator SpawnEnemy()
+    private void SpawnUnit()
     {
-        foreach(var Enemy in CurrentWave)
-        {
-            if(!Enemy.GetComponent<Unit>().IsSpawned)
-            {
-                Enemy.GetComponent<Unit>().IsSpawned = true;
-                yield return new WaitForSeconds(WaveSpawnTimer);
-            }            
-        }        
+        UnitFactory.Create("mech");
     }
 
     public void RemoveUnitFromCurrentWave(GameObject gameObject)

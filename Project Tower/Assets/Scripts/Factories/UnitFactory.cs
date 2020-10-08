@@ -39,6 +39,8 @@ public static class UnitFactory
             GameObject newUnit = GameObject.CreatePrimitive(PrimitiveType.Cube);
             newUnit.AddComponent(type);
             newUnit.GetComponent<Unit>().Initialized();
+            newUnit.GetComponent<Unit>().go = newUnit;
+
             
             return newUnit;
         }

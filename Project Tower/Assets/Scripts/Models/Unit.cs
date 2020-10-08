@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour
 {
     // Specifies the type of unit.. Used in factory to create units
+    public GameObject go;
     public abstract string UnitType { get; }
     public int Health { get => health; set => health = value; }
     public float BaseMoveSpeed;
@@ -18,6 +19,7 @@ public abstract class Unit : MonoBehaviour
     private int moveSpeed;
     private int damage;
     private bool isStationary;
+    [SerializeField]
     private bool isSpawned;
     private Mesh unitMesh;
     private Material material;
@@ -30,14 +32,17 @@ public abstract class Unit : MonoBehaviour
         // transform.position += new Vector3(Random.RandomRange(-4, 4) * Time.deltaTime, Random.RandomRange(-4, 4) * Time.deltaTime, Random.RandomRange(-4, 4) * Time.deltaTime);
         
         //Grab first waypoint if unit has no waypoint
-        if(CurrentWaypoint == null)
-            CurrentWaypoint = WaveManager.Instance.Waypoints[0];
-        
-        MoveToWaypoint();
-
-        if(toBeDestoryed)
+        if(IsSpawned)
         {
-            DestoryUnit();
+            if(CurrentWaypoint == null)
+                CurrentWaypoint = WaveManager.Instance.Waypoints[0];
+            
+            MoveToWaypoint();
+
+            if(toBeDestoryed)
+            {
+                DestoryUnit();
+            }
         }
     }
 

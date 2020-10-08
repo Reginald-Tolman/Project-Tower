@@ -231,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255408220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -34.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -428,7 +428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentWaveNumber: 0
   WaveSpawnTimer: 0
+  Waypoints: []
   CurrentWave: []
+  RemoveFromWave: []
 --- !u!4 &1386494761
 Transform:
   m_ObjectHideFlags: 0

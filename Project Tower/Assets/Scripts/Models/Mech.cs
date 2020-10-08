@@ -10,7 +10,7 @@ public class Mech : Unit
     public Mech()
     {
         Health = 100;
-        BaseMoveSpeed = 500;
+        BaseMoveSpeed = 5;
         AddedFlatMoveSpeed = 0;
         Damage = 5;
         IsStationary = false;        
